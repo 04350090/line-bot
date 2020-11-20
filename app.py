@@ -41,6 +41,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
+    r = '很抱歉，您說什麼'
+
 
     if "睡覺" in msg:
         sticker_message = StickerSendMessage(
@@ -56,12 +58,17 @@ def handle_message(event):
         r = '嗨'
     elif msg == '你是誰':
         r = '我是機器人'
-    elif ['估價', '報價', '價格', '多少錢'] in msg:
+    elif '估價' in msg:
+        r = '您是想獲得產品報價，是嗎？'
+    elif '報價' in msg:
+        r = '您是想獲得產品報價，是嗎？'
+    elif '價格' in msg:
+        r = '您是想獲得產品報價，是嗎？'
+    elif '多少錢' in msg:
         r = '您是想獲得產品報價，是嗎？'
     elif msg in ['是的', '是', '對的']:
         r = '請稍等，會有專人為您服務'
-    else:
-        r = '很抱歉，您說什麼'
+        
 
     line_bot_api.reply_message(
         event.reply_token,
